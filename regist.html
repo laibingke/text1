@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <!-- uname: <input type="text" name="uname"><br>
+        pwd: <input type="password" name="pwd"><br> -->
+        <input type="button" value="regist" id="btn">
+    </form>
+
+    <script>
+    document.getElementById("btn").onclick = function (){
+
+        //fetch的好处避免写太多的AJXS代码也不用导入Jquery
+        fetch("http://127.0.0.1:8888/regist",{        //默认为get 请求
+            method:"post",
+            // body:JSON.stringify({       //body请求的数据把对象转化为字符串
+            //     uname:document.forms[0].uname.value,      //配置项的设置
+            //     pwd:document.forms[0].pwd.value
+            // })
+        }).then((r) =>{
+           r.text().then((s)=>{
+               console.log(s);
+           }).catch((err)=>{
+               console.log(err);
+           })
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+    </script>
+</body>
+</html>
